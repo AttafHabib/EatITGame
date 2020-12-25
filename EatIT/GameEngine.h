@@ -39,6 +39,7 @@ private:
 	void listenKey();
 	bool checkCollision();
 	void endingMessage();
+	void print(int X,int Y, char symbol);
 public:
 	GameEngine();
 	void startGame();

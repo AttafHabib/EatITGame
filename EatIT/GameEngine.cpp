@@ -58,17 +58,32 @@ void GameEngine::endingMessage() {
 }
 void GameEngine::drawBoundry() {
 	changeColor(2);
-	for (int current_Y = 0; current_Y < sizeY; current_Y++)
-	{
-		for (int current_X = 0; current_X < sizeX; current_X++) {
-			//Draw Boundry
-			if (current_Y == 0 || current_X == 0 || current_X == sizeX - 1 || current_Y == sizeY - 1) {
-				matrix[current_Y][current_X] = 1;
-				goTo(current_X, current_Y);
-				cout << "#";
-			}
-		}
+	//for (int current_Y = 0; current_Y < sizeY; current_Y++)
+	//{
+	//	for (int current_X = 0; current_X < sizeX; current_X++) {
+	//		//Draw Boundry
+	//		if (current_Y == 0 || current_X == 0 || current_X == sizeX - 1 || current_Y == sizeY - 1) {
+	//			matrix[current_Y][current_X] = 1;
+	//			goTo(current_X, current_Y);
+	//			cout << "#";
+	//		}
+	//	}
+	//}
+	//Optimized n2 to n
+	for (int i = 0; i < sizeY; i++) {
+		matrix[0][i] = 1; //Top
+		print(i, 0, '#');
+		matrix[i][0] = 1; //Left
+		print(0, i, '#');
+		matrix[i][sizeY - 1] = 1; //Right
+		print(sizeY-1, i, '#');
+		matrix[sizeY - 1][i] = 1; //Bottom
+		print(i, sizeY-1, '#');
 	}
+}
+void GameEngine::print(int X,int Y,char symbol) {
+	goTo(X, Y);
+	cout << symbol;
 }
 void GameEngine::resetBoard() {
 	//Reset to 0 except boundry

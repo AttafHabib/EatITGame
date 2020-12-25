@@ -149,7 +149,6 @@
   <ItemGroup>
     <ClCompile Include="EatIT.cpp" />
     <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="temp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h" />
