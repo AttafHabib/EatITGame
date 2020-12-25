@@ -58,27 +58,17 @@ void GameEngine::endingMessage() {
 }
 void GameEngine::drawBoundry() {
 	changeColor(2);
-	//for (int current_Y = 0; current_Y < sizeY; current_Y++)
-	//{
-	//	for (int current_X = 0; current_X < sizeX; current_X++) {
-	//		//Draw Boundry
-	//		if (current_Y == 0 || current_X == 0 || current_X == sizeX - 1 || current_Y == sizeY - 1) {
-	//			matrix[current_Y][current_X] = 1;
-	//			goTo(current_X, current_Y);
-	//			cout << "#";
-	//		}
-	//	}
-	//}
-	//Optimized n2 to n
-	for (int i = 0; i < sizeY; i++) {
+	int size_y = sizeY-1;
+	for (int i = 0; i < size_y; i++) {
 		matrix[0][i] = 1; //Top
-		print(i, 0, '#');
-		matrix[i][0] = 1; //Left
+		matrix[i+1][0] = 1; //Left
+		matrix[i][size_y] = 1; //Right
+		matrix[size_y][i+1] = 1; //Bottom
+
 		print(0, i, '#');
-		matrix[i][sizeY - 1] = 1; //Right
-		print(sizeY-1, i, '#');
-		matrix[sizeY - 1][i] = 1; //Bottom
-		print(i, sizeY-1, '#');
+		print(i+1, 0, '#');
+		print(i, size_y, '#');
+		print(size_y, i+1, '#');
 	}
 }
 void GameEngine::print(int X,int Y,char symbol) {
